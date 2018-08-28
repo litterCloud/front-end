@@ -55,14 +55,10 @@ router.afterEach((to, from) => {
   if (to.meta.needLogin) {
     console.log("是否登陆")
     //页面需要登录
-    let logId = to.meta.logId;
     setTimeout(function () { //将这玩意儿扔到下一个轮询执行
       if (store.state.userInfo.tel) {
         //若已登录
         console.log("111111");
-        if(logId){
-          postLog(logId);
-        }
       } else {
         login(); //弹出登录框
       }
