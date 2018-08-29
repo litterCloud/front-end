@@ -1,15 +1,6 @@
 <template>
   <div id="app" @click="triggerFn">
     <router-view></router-view>
-    <div v-transfer-dom>
-      <confirm
-        v-model="show6"
-        :show-cancel-button="false"
-        title="提示信息"
-        @on-confirm="onConfirm">
-        <p style="text-align:center;">由于获取不到您的精准定位，无法给您推荐附近门店，请至设置中打开定位</p>
-      </confirm>
-    </div>
   </div>
 </template>
 <script>
@@ -24,57 +15,6 @@
       }
     },
     methods: {
-      triggerFn(data){
-        let vm = this;
-        let triggerDom = data.path;
-        let storeMsg = '';
-        let pageCode = 'PAGE_CODE_001';
-        for(let i =0;i<triggerDom.length;i++){
-          let $trigger = triggerDom[i];
-          if($trigger.attributes){
-            let touchId = $trigger.attributes['touchId'];
-
-            if($trigger.attributes['pageCode']){
-              pageCode = $trigger.attributes['pageCode'].value;
-            }
-            if($trigger.attributes['touchStoreId']){
-              storeMsg = $trigger.attributes['touchStoreId'].value;
-            }
-            if($trigger.attributes['touchActiveUrl']){
-              storeMsg = $trigger.attributes['touchActiveUrl'].value;
-            }
-            if($trigger.attributes['touchAxtiveId']){
-              storeMsg = $trigger.attributes['touchAxtiveId'].value;
-            }
-            if(touchId){
-              vm.ajaxTrigger(pageCode,touchId.value,storeMsg);
-            }
-          }
-        }
-      },
-      ajaxTrigger(pageCode,touchId,storeMsg = ''){
-        let vm = this;
-        let path = location.href;
-        console.log(vm.$store.state);
-        let urlParam = vm.$util.getAllQueryString();
-        let sendData = {
-          pageCode:pageCode,//美宜佳本网抢红包,
-          pageUrl:path,//页面url
-          phoneNumber:vm.$store.state.userInfo.tel,//用户手机号
-          sourceType:urlParam.sourceType ? urlParam.sourceType : '', //访问入口 url
-          cityName:vm.$store.state.handleAddress.city || vm.$store.state.position.address ||  vm.$store.state.IpPosition.name || "", //用户定位获取到的地市名称
-          touchCode:touchId,//页面触点的唯一标识
-          spare: storeMsg
-        }
-        vm.$axios({
-          url:vm.$util.getUrl('touchType'),
-          data:sendData
-        }).then(()=>{
-          console.log("touch ajax success");
-        }).catch(()=>{
-          console.log("touch ajax fail");
-        })
-      },
       onConfirm (msg) {
         if (msg) {
           alert(msg)
