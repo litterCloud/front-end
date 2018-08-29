@@ -1,6 +1,7 @@
 <template>
   <div id="app" @click="triggerFn">
     <router-view></router-view>
+    <div>测试master</div>
   </div>
 </template>
 <script>
