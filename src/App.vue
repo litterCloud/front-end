@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="net-view">
     <router-view></router-view>
   </div>
 </template>
@@ -16,6 +16,6 @@
   }
 </script>
 
-<style>
+<style >
 
 </style>
