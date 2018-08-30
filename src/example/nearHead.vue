@@ -5,12 +5,10 @@
     </div>
 </template>
 <script>
-  import nearHead from "@/views/shopCity/nearHead"
-  import nearActivity from "@/views/shopCity/nearActivity"
+ /* import nearHead from "@/views/shopCity/nearHead"
+  import nearActivity from "@/views/shopCity/nearActivity"*/
     export default {
         components: {
-          nearHead,
-          nearActivity
         },
         data() {
             return {

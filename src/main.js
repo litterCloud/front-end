@@ -1,8 +1,6 @@
 
-import 'mint-ui/lib/style.css'
 
 import Vue from 'vue'
-import { InfiniteScroll } from 'mint-ui';
 import vux from '@/config/vux.js'
 import router from './router/index'
 import tools from './libs/tools'

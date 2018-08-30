@@ -4,7 +4,6 @@ import views from './views';
 import store from '@/store'
 // import notFind from '@/views/notFind'
 import login from '@/libs/login'
-import postLog from '@/libs/postLog'
 Vue.use(VueRouter);
 let router =  new VueRouter({
   routes: [

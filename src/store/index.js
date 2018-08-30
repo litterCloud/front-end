@@ -57,7 +57,6 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    ...mutation
   },
   strict: true,
   plugins: []
